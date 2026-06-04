@@ -10,18 +10,15 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         :root {
-            --bg-grey: #e8e8e8; /* Premium Charcoal Grey */
-            --card-grey: #334155; /* Slightly lighter slate grey for contrast */
-            --white: #FFFFFF;
-            --text-main: #f8fafc;
-            --text-muted: #cbd5e1;
-            --accent-gold: #fbbf24;
-            --accent-gold-hover: #f59e0b;
-            --border-color: #475569;
+            --bg-light-grey: #f8fafc; /* Premium Soft Light Grey */
+            --card-white: #ffffff; /* Crisp White for Card Surfaces */
+            --text-dark: #0f172a; /* Deep Slate Charcoal for High Readability */
+            --text-muted: #475569;
+            --accent-gold: #b45309; /* Deepened Gold for Flawless Contrast on Light BG */
+            --accent-gold-hover: #78350f;
+            --border-color: #e2e8f0;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-grey);
@@ -29,7 +26,6 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         /* ========== NAVBAR ========== */
         .navbar {
             background-color: var(--bg-grey);
@@ -595,7 +591,7 @@
                     </div>
                 </div>
                 <div id="successSection" class="success-message">
-                    <h3>Deployment Secured. 💛</h3>
+                    <h3>Deployment Secured. </h3>
                     <p>You've officially joined the cohort backing the digital upgrade. We will ping your inbox the exact moment the server goes live.</p>
                     <button class="btn-vote" style="width: 100%;" onclick="closeModal()">Back to Platform Preview</button>
                 </div>
