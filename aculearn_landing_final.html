@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcuLearn | Day-One Infrastructure by Are Gold</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-grey: #e8e8e8; /* Premium Charcoal Grey */
+            --card-grey: #334155; /* Slightly lighter slate grey for contrast */
+            --white: #FFFFFF;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent-gold: #fbbf24;
+            --accent-gold-hover: #f59e0b;
+            --border-color: #475569;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-grey);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background-color: var(--bg-grey);
+            border-bottom: 2px solid var(--accent-gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background-color: rgba(51, 65, 85, 0.4);
+            padding: 7rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--accent-gold);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Interactive Mock Search Box */
+        .search-container {
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            display: flex;
+            background: var(--card-grey);
+            padding: 6px;
+            border-radius: 0.75rem;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-container input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            outline: none;
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .search-container input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        .cta-button {
+            background-color: var(--accent-gold);
+            color: #0f172a;
+            border: none;
+            padding: 1.1rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 14px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            background-color: var(--bg-grey);
+            padding: 6rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 3.5rem;
+            text-align: center;
+            letter-spacing: -1.5px;
+        }
+
+        .section-title .accent {
+            color: var(--accent-gold);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-grey);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 30px rgba(251, 191, 36, 0.15);
+        }
+
+        .feature-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .feature-label {
+            color: var(--text-main);
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .feature-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ========== WHY SECTION ========== */
+        .why-section {
+            background-color: rgba(51, 65, 85, 0.4);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .why-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .why-title {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .why-title .accent {
+            color: var(--accent-gold);
+        }
+
+        .why-text {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ========== MODAL ARCHITECTURE (DESKTOP) ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--bg-grey);
+            border: 2px solid var(--border-color);
+            border-radius: 1.25rem;
+            max-width: 850px;
+            width: 100%;
+            max-height: 90vh;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .modal-image-wrapper {
+            flex: 1;
+            background-color: var(--card-grey);
+            position: relative;
+            min-height: 100%;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal-text {
+            flex: 1.2;
+            padding: 3.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: var(--card-grey);
+            border: 1px solid var(--border-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 200ms ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--accent-gold);
+            color: #000000;
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .modal h2 .accent {
+            color: var(--accent-gold);
+        }
+
+        .modal-description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .modal-description strong {
+            color: var(--text-main);
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .email-input {
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            color: var(--text-main);
+            background-color: var(--card-grey);
+            transition: all 200ms ease;
+            font-family: inherit;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.15);
+        }
+
+        .btn-vote {
+            background-color: var(--accent-gold);
+            color: #0f172a;
+            border: none;
+            padding: 1.1rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 250ms ease;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+        }
+
+        .btn-vote:hover {
+            background-color: var(--accent-gold-hover);
+            box-shadow: 0 6px 18px rgba(251, 191, 36, 0.35);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+        }
+
+        .success-message h3 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .success-message p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background-color: rgba(15, 23, 42, 0.4);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 700;
+            transition: opacity 200ms ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* ========== MOBILE BREAKPOINT FIX ========== */
+        @media (max-width: 768px) {
+            .hero { padding: 5rem 1.5rem; }
+            .hero h1 { font-size: 2.6rem; letter-spacing: -1px; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .section-title { font-size: 2.2rem; }
+            .why-title { font-size: 2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            
+            .modal-content {
+                flex-direction: column;
+                max-width: 450px;
+                max-height: 85vh;
+            }
+
+            .modal-image-wrapper {
+                height: 200px;
+                min-height: 200px;
+                flex: none;
+            }
+
+            .modal-text {
+                padding: 2rem 1.5rem;
+                flex: 1;
+                overflow-y: auto;
+                justify-content: flex-start;
+            }
+
+            .modal h2 { 
+                font-size: 1.6rem; 
+                margin-top: 0.5rem;
+            }
+
+            .modal-description {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .modal-close {
+                background: var(--card-grey);
+                border-color: var(--border-color);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Acu<span>Learn</span></div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">Day One Infrastructure</span>
+            <h1>Stop failing exams because of a missing PDF.</h1>
+            <p class="hero-subtitle">
+                Imagine a 24/7 digital vault containing every past question, departmental textbook, and high-fidelity study guide you will ever need. No broken links. No photocopy lines. 100% free.
+            </p>
+            
+            <!-- Interactive Mock Search Bar -->
+            <div class="search-container">
+                <input type="text" id="mockSearchInput" placeholder="Search POS 201 past questions, POL textbooks, Social Science journals...">
+                <button class="cta-button" style="padding: 0.5rem 1.5rem; font-size: 0.95rem;" onclick="openModal()">Search</button>
+            </div>
+
+            <button class="cta-button" onclick="openModal()">Access the Vault (Demo)</button>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div class="features-container">
+            <h2 class="section-title">The <span class="accent">Realities</span> of Day One</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-number"> 62+</span>
+                    <div class="feature-label">Past Questions</div>
+                    <div class="feature-description">From 100L to 500L. Every single political science and social science course covered[cite: 1].</div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number"> 52+</span>
+                    <div class="feature-label">Core Textbooks</div>
+                    <div class="feature-description">No more hunting for expensive PDFs or buying manuals. They are already loaded.</div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number"> 24/7</span>
+                    <div class="feature-label">Availability</div>
+                    <div class="feature-description">Midnight study session or a 6 AM emergency cram? The server never goes offline.</div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number">100%</span>
+                    <div class="feature-label">Totally Free</div>
+                    <div class="feature-description">Zero hidden charges. Zero data waste. Built purely as student infrastructure.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY SECTION -->
+    <section class="why-section">
+        <div class="why-container">
+            <h2 class="why-title">
+                "Why doesn't this <span class="accent">exist yet?</span>"
+            </h2>
+            <p class="why-text">
+                Because it takes leadership that actually lives your academic frustrations to step up and build it. This isn't a vague manifesto talking point to be forgotten post-election. This is a functional preview of what happens next.
+            </p>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal" id="votingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-image-wrapper">
+                <img src="/gold.png" alt="Are Gold Hepzibah" class="modal-image">
+            </div>
+            <div class="modal-text">
+                <div id="formSection">
+                    <h2>This is what happens when you <span class="accent">Vote for Gold.</span></h2>
+                    <div class="email-form">
+                        <input 
+                            type="email" 
+                            class="email-input" 
+                            id="emailInput" 
+                            placeholder="Enter your student email address"
+                            required
+                        >
+                        <button class="btn-vote" onclick="handleVote()">Secure My Access & Vote Gold 🗳️</button>
+                    </div>
+                </div>
+                <div id="successSection" class="success-message">
+                    <h3>Deployment Secured. 💛</h3>
+                    <p>You've officially joined the cohort backing the digital upgrade. We will ping your inbox the exact moment the server goes live.</p>
+                    <button class="btn-vote" style="width: 100%;" onclick="closeModal()">Back to Platform Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p style="font-weight: 800; color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase;">Vote Are Gold Hepzibah</p>
+            <p style="color: var(--white); opacity: 0.9; font-weight: 600;">Candidate for Vice President, NAPSS ACU Chapter[cite: 1]</p>
+            
+            <div class="footer-links">
+                <a href="#" onclick="alert('Manifesto distribution details dropping soon!')">Full Manifesto</a>
+                <a href="#" onclick="alert('Direct Campaign Desk: aregodhepzibah@acu.edu')">Get Involved</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.5;">Designed with speed and audacity for a better NAPSS[cite: 1].</p>
+        </div>
+    </footer>
+
+    <script>
+        function openModal() {
+            document.getElementById('votingModal').classList.add('active');
+            document.getElementById('formSection').style.display = 'block';
+            document.getElementById('successSection').style.display = 'none';
+            document.getElementById('emailInput').value = '';
+        }
+
+        function closeModal() {
+            document.getElementById('votingModal').classList.remove('active');
+        }
+
+        function handleVote() {
+            const email = document.getElementById('emailInput').value.trim();
+            
+            if (!email) {
+                alert('Please provide your email to back the platform.');
+                return;
+            }
+
+            if (!email.includes('@')) {
+                alert('Please enter a valid email structure.');
+                return;
+            }
+
+            console.log('Voter pipeline registered:', email);
+
+            document.getElementById('formSection').style.display = 'none';
+            document.getElementById('successSection').style.display = 'block';
+        }
+
+        // Close modal when clicking outside surface
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('votingModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Interactive search listener
+        document.getElementById('mockSearchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                openModal();
+            }
+        });
+    </script>
+</body>
+</html>
