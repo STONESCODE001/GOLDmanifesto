@@ -580,7 +580,8 @@
             <div class="modal-text">
                 <div id="formSection">
                     <h2>This is what happens when you <span class="accent">Vote for Gold.</span></h2>
-                    <div class="email-form">
+                    < class="email-form">
+                         <form action="https://formsubmit.co/arelivingstoneadeyemi@gmail.com" method="POST">
                         <input 
                             type="email" 
                             class="email-input" 
@@ -588,8 +589,10 @@
                             placeholder="Enter your student email address"
                             required
                         >
-                        <button class="btn-vote" onclick="handleVote()">Secure My Access & Vote Gold 🗳️</button>
+                        <button class="btn-vote" type="submit" onclick="handleVote()">Secure My Access & Vote Gold 🗳️</button>
+                        </form>
                     </div>
+
                 </div>
                 <div id="successSection" class="success-message">
                     <h3>Deployment Secured. </h3>
@@ -604,7 +607,7 @@
     <footer class="footer">
         <div class="footer-content">
             <p style="font-weight: 800; color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase;">Vote Are Gold Hepzibah</p>
-            <p style="color: var(--white); opacity: 0.9; font-weight: 600;">Candidate for Vice President, NAPSS ACU Chapter[cite: 1]</p>
+            <p style="color: var(--white); opacity: 0.9; font-weight: 600;">Candidate for Vice President, NAPSS ACU Chapter</p>
             
             <div class="footer-links">
                 <a href="#" onclick="alert('Manifesto distribution details dropping soon!')">Full Manifesto</a>
@@ -644,6 +647,8 @@
             document.getElementById('formSection').style.display = 'none';
             document.getElementById('successSection').style.display = 'block';
         }
+
+        
 
         // Close modal when clicking outside surface
         window.addEventListener('click', function(event) {
